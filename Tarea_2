@@ -1,3 +1,41 @@
 import numpy as np
 import pandas as pd
 import random as rd
+
+
+datos = pd.read_csv("datos_T2.txt") #importando los datos
+datos
+
+#especificamente lo que haré es para cada dato 
+#del conjunto de validación predicir su variable respuesta
+#usando el metodo de K vecinos más cercanos ,donde estos 
+#K vecinos serán seleccionados del conjunto de entrenamiento ,
+#y así obtendre la tasas de error y matrices de confución (para cada K usado)
+
+
+lista_doscientos_zeros=np.zeros(shape=200) #dividire el conjunto de datos en 10 
+                                           #grupos de 20 para usar validación  
+                                           #cruzada de 10 iteraciones y despues   
+                                           #validación cruzada simple usando como
+                                           #conjunto de validación el primer grupo
+                                           
+                                           
+
+
+
+for i in range(0,200):
+    lista_doscientos_zeros[i]=i
+    
+    
+
+
+matriz_doscientos_zeros=np.zeros([10,20])
+
+
+for i in range(0,200):
+    j=rd.randint(0,199-i)
+    matriz_doscientos_zeros[int(i/20),(i+1)%20-1]=lista_doscientos_zeros[j]    
+    lista_doscientos_zeros=np.delete(lista_doscientos_zeros,j)
+    
+grupos=matriz_doscientos_zeros
+grupos                                 #los 10 grupos de 20 ya listos
